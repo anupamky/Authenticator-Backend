@@ -78,6 +78,8 @@ router.post(backendRoutes.getUser, async (req, res) => {
 router.post(backendRoutes.verifyUser, async (req, res) => {
   const email = req.body.email;
   // const deviceUID = req.body.deviceUID;
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   try {
     const response = await User.findOne({ email: email });
     if (!response) {
