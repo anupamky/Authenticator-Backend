@@ -41,7 +41,7 @@ router.post(backendRoutes.createUser, async (req, res) => {
 
 //* Get User
 router.post(backendRoutes.getUser, async (req, res) => {
-  const token = req.header("auth-token");
+  const token = req.body.authToken;
   if (!token) {
     res
       .status(400)
