@@ -3,6 +3,7 @@ dotenv.config();
 
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require('cors')
 
 const port = process.env.PORT;
 const mongoPort = process.env.AUTHENTICATOR_DB_URL;
@@ -20,6 +21,12 @@ app.use("/api/user/", require("./routes/user.js"));
 app.get("/", async (req, res) => {
   res.send("Hello, Authenticator backend here -_-");
 });
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
+  })
+);
 
 app.listen(port, () => {
   console.log(`[server]: Server is running at http://localhost:${port}`);
