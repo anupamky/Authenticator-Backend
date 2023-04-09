@@ -3,7 +3,7 @@ dotenv.config();
 
 const express = require("express");
 const mongoose = require("mongoose");
-const cors = require('cors')
+const cors = require("cors");
 
 const port = process.env.PORT;
 const mongoPort = process.env.AUTHENTICATOR_DB_URL;
@@ -23,7 +23,7 @@ app.get("/", async (req, res) => {
 });
 app.use(
   cors({
-    origin: "*",
+    origin: ["*", "http://localhost:3000"],
     methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
   })
 );
